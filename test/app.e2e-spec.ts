@@ -59,6 +59,25 @@ describe('Test All products.controller routes (e2e)', () => {
       .get(BASE_PATH)
       .expect(200)
   });
+
+
+  it('Return all product by category ID (GET)', () => {
+    return request(app.getHttpServer())
+      .get(`${BASE_PATH}byCategoryID/${productCreatedTest.categoryId}`)
+      .expect(200)
+  });
+
+  it('Return [] if product not exists by any category ID (GET)', () => {
+    return request(app.getHttpServer())
+      .get(`${BASE_PATH}byCategoryID/${99999999999}`)
+      .expect(200)
+      .expect((res)=>{
+        expect(res.body).toStrictEqual([])
+      })
+  });
+
+
+
   it('Return specific product (GET)', () => {
     return request(app.getHttpServer())
       .get(BASE_PATH+productCreatedTest.id)

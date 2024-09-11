@@ -16,6 +16,10 @@ export class ProductsService {
     return await this.repository.findAll();
   }
 
+  async findAllByCategoryId(categoryID: number) {
+    return await this.repository.findAllByCategoryId(categoryID);
+  }
+  
   async findOne(id: number) {
     return await this.repository.findOne(id);
   }
