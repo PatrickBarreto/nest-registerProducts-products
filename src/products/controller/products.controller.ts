@@ -9,31 +9,31 @@ export class ProductsController {
 
   @HttpCode(201)
   @Post()
-  create(@Body() createProductDto: CreateProductDto) {
-    return this.productsService.create(createProductDto);
+  async create(@Body() createProductDto: CreateProductDto) {
+    return await this.productsService.create(createProductDto);
   }
   
   @HttpCode(200)
   @Get()
-  findAll() {
-    return this.productsService.findAll();
+  async findAll() {
+    return await this.productsService.findAll();
   }
   
   @HttpCode(200)
   @Get(':id')
-  findOne(@Param('id', new ParseIntPipe()) id: number) {
-    return this.productsService.findOne(id);
+  async findOne(@Param('id', new ParseIntPipe()) id: number) {
+    return await this.productsService.findOne(id);
   }
 
   @HttpCode(200)
   @Patch(':id')
-  update(@Param('id', new ParseIntPipe()) id: number, @Body() updateProductDto: UpdateProductDto) {
-    return this.productsService.update(id, updateProductDto);
+  async update(@Param('id', new ParseIntPipe()) id: number, @Body() updateProductDto: UpdateProductDto) {
+    return await this.productsService.update(id, updateProductDto);
   }
 
   @HttpCode(204)
   @Delete(':id')
-  remove(@Param('id', new ParseIntPipe()) id: number) {
-    return this.productsService.remove(id);
+  async remove(@Param('id', new ParseIntPipe()) id: number) {
+    return await this.productsService.remove(id);
   }
 }
