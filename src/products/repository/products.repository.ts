@@ -8,30 +8,30 @@ export class ProductsRpository {
   constructor(private readonly Prisma: PrismaService){
   }
 
-  create(createProductDto: CreateProductDto) {
-    return this.Prisma.products.create({
+  async create(createProductDto: CreateProductDto) {
+    return await this.Prisma.products.create({
       data: createProductDto
     });
   }
   
-  findAll() {
-    return this.Prisma.products.findMany({
+  async findAll() {
+    return await this.Prisma.products.findMany({
       orderBy: {
         createdAt: "asc"
       }
     });
   }
   
-  findOne(id: number) {
-    return this.Prisma.products.findUnique({
+  async findOne(id: number) {
+    return await this.Prisma.products.findUnique({
       where: {
         id: id
       }
     });
   }
   
-  update(id: number, updateProductDto: UpdateProductDto) {
-    return this.Prisma.products.update({
+  async update(id: number, updateProductDto: UpdateProductDto) {
+    return await this.Prisma.products.update({
       where:{
         id: id
       },
@@ -39,8 +39,8 @@ export class ProductsRpository {
     });
   }
   
-  delete(id: number) {
-    return this.Prisma.products.delete({
+  async delete(id: number) {
+    return await this.Prisma.products.delete({
       where: {
         id: id
       }

@@ -8,23 +8,23 @@ export class ProductsService {
   constructor(private readonly repository: ProductsRpository){
   }
 
-  create(createProductDto: CreateProductDto) {
-    return this.repository.create(createProductDto);
+  async create(createProductDto: CreateProductDto) {
+    return await this.repository.create(createProductDto);
   }
 
-  findAll() {
-    return this.repository.findAll();
+  async findAll() {
+    return await this.repository.findAll();
   }
 
-  findOne(id: number) {
-    return this.repository.findOne(id);
+  async findOne(id: number) {
+    return await this.repository.findOne(id);
   }
 
-  update(id: number, updateProductDto: UpdateProductDto) {
-    return this.repository.update(id, updateProductDto);
+  async update(id: number, updateProductDto: UpdateProductDto) {
+    return await this.repository.update(id, updateProductDto);
   }
 
-  remove(id: number) {
-    return this.repository.delete(id);
+  async remove(id: number) {
+    return await this.repository.delete(id);
   }
 }
