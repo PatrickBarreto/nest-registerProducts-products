@@ -21,6 +21,18 @@ export class ProductsRpository {
       }
     });
   }
+
+    
+  async findAllByCategoryId(categoryId: number) {
+    return await this.Prisma.products.findMany({
+      where:{
+        categoryId: categoryId
+      },
+      orderBy: {
+        createdAt: "asc"
+      }
+    });
+  }
   
   findOne(id: number) {
     return this.Prisma.products.findUnique({

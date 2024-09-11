@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, ParseIntPipe, HttpCode } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, ParseIntPipe, HttpCode, NotFoundException } from '@nestjs/common';
 import { ProductsService } from '../service/products.service';
 import { CreateProductDto } from '../dto/create-product.dto';
 import { UpdateProductDto } from '../dto/update-product.dto';
@@ -17,6 +17,12 @@ export class ProductsController {
   @Get()
   findAll() {
     return this.productsService.findAll();
+  }
+    
+  @HttpCode(200)
+  @Get('/byCategoryID/:categoryId')
+  async findAllByCategoryId(@Param('categoryId', new ParseIntPipe()) categoryId: number) {
+    return await this.productsService.findAllByCategoryId(categoryId);
   }
   
   @HttpCode(200)
